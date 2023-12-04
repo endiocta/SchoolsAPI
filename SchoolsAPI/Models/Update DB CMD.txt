@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=.\SQLExpress;Database=SchoolDB;user=sa;password=b3rca!@#;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -Force -Context ApiDbContext -OutputDir Models
