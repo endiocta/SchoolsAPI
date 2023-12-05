@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using SchoolsAPI.DataAccess;
 using SchoolsAPI.Models;
@@ -18,14 +19,15 @@ namespace SchoolsAPI.Controllers
             this.logger = logger;
         }
 
-        [HttpGet("{id}")]
+        //[HttpGet("{studentid}")]
+        [HttpGet]
         [Route("Get")]
-        public async Task<ResponseDto<StudentAddress>> GetByStudentId(int id)
+        public async Task<ResponseDto<StudentAddress>> GetByStudentIdAsync(int studentid)
         {
             ResponseDto<StudentAddress> response = new ResponseDto<StudentAddress>();
             try
             {
-                var result = db.StudentAddresses.Where(x => x.StudentId == id).FirstOrDefault();
+                var result = await db.StudentAddresses.Where(x => x.StudentId == studentid).FirstOrDefaultAsync();
                 if (result == null)
                 {
                     response.IsSuccess = false;
