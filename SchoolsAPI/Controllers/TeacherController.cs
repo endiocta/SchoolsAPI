@@ -45,7 +45,7 @@ namespace SchoolsAPI.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError("Get All Standards failed!", ex);
+                logger.LogError("Get All Teachers failed!", ex);
                 response.IsSuccess = false;
                 response.ErrorMessages = new List<string>();
                 response.ErrorMessages.Add(ex.Message);
@@ -56,9 +56,9 @@ namespace SchoolsAPI.Controllers
 
         [HttpPost]
         [Route("Add")]
-        public async Task<ResponseDto<TeacherRepository.ResultTeacher>> AddAsync(Teacher teacher)
+        public async Task<ResponseDto<CommonResult>> AddAsync(Teacher teacher)
         {
-            ResponseDto<TeacherRepository.ResultTeacher> response = new ResponseDto<TeacherRepository.ResultTeacher>();
+            ResponseDto<CommonResult> response = new ResponseDto<CommonResult>();
             try
             {
                 logger.LogInformation($"Teacher API Add, Data: {JsonConvert.SerializeObject(teacher)}");
@@ -77,7 +77,7 @@ namespace SchoolsAPI.Controllers
                 //{
                 //    response.Result = result;
                 //}
-                TeacherRepository.ResultTeacher result = new TeacherRepository.ResultTeacher();
+                CommonResult result = new CommonResult();
                 result.message.Add("Teacher added successfully!");
                 response.Result = result;
             }

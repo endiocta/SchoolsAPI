@@ -88,6 +88,7 @@ namespace SchoolsAPI.DataAccess
 
                 entity.HasOne(d => d.Teacher).WithMany(p => p.Courses)
                     .HasForeignKey(d => d.TeacherId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Course_Teacher");
             });
 
@@ -124,7 +125,7 @@ namespace SchoolsAPI.DataAccess
 
                 entity.HasOne(d => d.Standard).WithMany(p => p.Students)
                     .HasForeignKey(d => d.StandardId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Student_Standard");
             });
 
@@ -165,7 +166,6 @@ namespace SchoolsAPI.DataAccess
 
                 entity.HasOne(d => d.Student).WithMany(p => p.StudentCourses)
                     .HasForeignKey(d => d.StudentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_StudentCourse_Student");
             });
 
@@ -179,7 +179,6 @@ namespace SchoolsAPI.DataAccess
 
                 entity.HasOne(d => d.Standard).WithMany(p => p.Teachers)
                     .HasForeignKey(d => d.StandardId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Teacher_Standard");
             });
         }

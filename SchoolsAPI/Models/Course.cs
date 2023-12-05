@@ -9,9 +9,9 @@ public partial class Course
 
     public string CourseName { get; set; } = null!;
 
-    public int TeacherId { get; set; }
+    public int? TeacherId { get; set; }
 
     public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
 
-    public virtual Teacher Teacher { get; set; } = null!;
+    public virtual Teacher? Teacher { get; set; }
 }

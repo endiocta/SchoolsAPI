@@ -17,9 +17,9 @@ public partial class Student
 
     public DateTime? BirthDate { get; set; }
 
-    public int StandardId { get; set; }
+    public int? StandardId { get; set; }
 
-    public virtual Standard Standard { get; set; } = null!;
+    public virtual Standard? Standard { get; set; }
 
     public virtual ICollection<StudentAddress> StudentAddresses { get; set; } = new List<StudentAddress>();
 
